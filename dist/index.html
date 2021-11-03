@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travel Agency</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <!-- font awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+</head>
+<body class="overflow-x-hidden">
+
+    <div class="w-screen relative h-screen bg-gray-600">
+        <div class="w-full h-full relative bg-no-repeat  z-20 video-container">
+            <video id="background-video" autoplay loop muted >
+                <source src="assets/video.mp4" type="video/mp4">
+            </video>
+            
+            
+            <div class="relative caption z-0 flex flex-col space-y-28 md:space-y-28  items-center">
+                <!-- NAVBAR -->
+                <div class="flex flex-row items-center justify-between lg:justify-center space-x-12 bg-white opacity-100 w-full 2xl:w-1/2 h-auto py-5 px-10 rounded-b-xl text-gray-900 font-semibold text-xl z-20">
+                    
+                    <div class="inline-flex space-x-3 items-center">
+                        <img src="assets/globe.png" class="w-10 h-10" alt="">
+                        <p class="font-bold text-3xl leading-9">
+                            <span class="text-green-600 -mx-1">Tra</span>
+                            <span class="text-blue-600 -mx-1">vel</span>
+                            <span class="text-yellow-500 -ml-1">lito</span>
+                        </p>
+                    </div>
+
+                    <div id="toggle-mobile" class="lg:hidden">
+                        <button class="inline-flex items-center justify-center focus:outline-none mr-6">
+                            <i class="fas fa-bars text-xl text-blue-900 hover:text-indigo-900"></i>
+                        </button>
+                    </div>
+
+                    <div class="hidden lg:flex flex-row space-x-8 text-blue-600 font-semibold">
+
+                        <div class="hover:bg-blue-100 transition cursor-pointer px-3 py-1 rounded-lg">
+                            <p>Hotels</p>
+                        </div>
+
+                        <div class="hover:bg-blue-100 transition cursor-pointer px-3 py-1 rounded-lg">
+                            <p>Fligths</p>
+                        </div>
+
+                        <div class="hover:bg-blue-100 transition cursor-pointer px-3 py-1 rounded-lg">
+                            <p>Cruises</p>
+                        </div>
+
+                        <div class="hover:bg-blue-100 transition cursor-pointer px-3 py-1 rounded-lg">
+                            <p>Gallery</p>
+                        </div>
+
+                        <div class="hover:bg-blue-100 transition cursor-pointer px-3 py-1 rounded-lg">
+                            <p>Contact</p>
+                        </div>
+                    </div>
+
+                    
+                </div>
+
+                <!-- MOBILE MENU -->
+                <div id="menu-mobile" class="hidden fixed -top-24 inset-x-0 z-20 bg-white rounded-b-xl">
+                    <div class="flex flex-row justify-between items-center p-5 border-b-2 border-gray-100">
+
+                        <!-- logo -->
+                        <div class="inline-flex space-x-3 items-center">
+                            <img src="assets/globe.png" class="w-10 h-10" alt="">
+                            <p class="font-bold text-3xl leading-9">
+                                <span class="text-green-600 -mx-1">Tra</span>
+                                <span class="text-blue-600 -mx-1">vel</span>
+                                <span class="text-yellow-500 -ml-1">lito</span>
+                            </p>
+                        </div>
+
+                        <!-- hide menu button -> x -->
+                        <i id="hide-menu" class="fas fa-times mr-5 fa-2x text-blue-800 cursor-pointer"></i>
+                    </div>
+
+
+                    <div class="w-full flex flex-col items-start p-5">
+
+                        <div class="inline-flex space-x-3 items-center text-blue-800 hover:bg-gray-100 w-full cursor-pointer p-3 rounded-xl">
+                            <i class="fas fa-hotel fa-2x"></i>
+                            <p class="text-2xl font-semibold">Hotels</p>
+                        </div>
+
+                        <div class="inline-flex space-x-3 items-center text-blue-800 hover:bg-gray-100 w-full cursor-pointer p-3 rounded-xl">
+                            <i class="fas fa-plane fa-2x"></i>
+                            <p class="text-2xl font-semibold">Flights</p>
+                        </div>
+
+                        <div class="inline-flex space-x-3 items-center text-blue-800 hover:bg-gray-100 w-full cursor-pointer p-3 rounded-xl">
+                            <i class="fas fa-ship fa-2x"></i>
+                            <p class="text-2xl font-semibold">Cruises</p>
+                        </div>
+
+                        <div class="inline-flex space-x-3 items-center text-blue-800 hover:bg-gray-100 w-full cursor-pointer p-3 rounded-xl">
+                            <i class="fas fa-photo-video fa-2x"></i>
+                            <p class="text-2xl font-semibold">Gallery</p>
+                        </div>
+
+                        <div class="inline-flex space-x-3 items-center text-blue-800 hover:bg-gray-100 w-full cursor-pointer p-3 rounded-xl">
+                            <i class="fas fa-mobile fa-2x"></i>
+                            <p class="text-2xl font-semibold">Contact</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="w-full h-full z-10 flex justify-center items-center">
+                    <div class="flex flex-col space-y-24 md:space-y-6 w-2/3 h-auto p-6  md:p-24 items-center">
+
+                        <div class="text-5xl font-semibold text-white text-center w-screen md:w-full">
+
+                            <p>Search hundreds of hotel sites at once.</p>
+
+                        </div>
+
+                        <div class='flex flex-col lg:flex-row w-full p-4 space-y-6 lg:divide-x-2 justify-center h-19'>
+                            <div class="w-full h-19 lg:w-1/3">
+                                <input class="w-full p-3 md:transform md:translate-y-1 lg:transform lg:translate-y-6 rounded-lg lg:rounded-l-lg lg:rounded-r-none focus:outline-none" type="search" placeholder="Where...">
+                            </div>
+
+                            <div class="h-19 inline-flex bg-white mt-6 items-center px-4 py-3 space-x-4 justify-start rounded-lg lg:rounded-none lg:justify-between">
+                                <i class="fas fa-calendar-week text-blue-500"></i>
+                                <p class="text-gray-400">Check in  -  Check out</p>
+                            </div>
+
+                            <div class="inline-flex justify-between space-x-5 items-center bg-white px-6 py-3 rounded-lg lg:rounded-none">
+                                <p>1 room, 2 guests</p>
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+
+                            <div class="flex items-center px-4 bg-blue-500 
+                            rounded-lg justify-center py-4 w-auto
+                            lg:justify-start lg:rounded-r-lg lg:rounded-l-none lg:py-1">
+                                <button class="text-white text-xl font-semibold text-center">
+                                    Search
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        
+
+    </div>
+
+    <div class="w-screen mt-32 z-20 py-12">
+        <div class="w-full h-auto flex flex-col items-center space-y-24">
+            
+            <!-- COVID SECTION -->
+            <div class="flex flex-row space-x-6 justify-center w-full md:w-3/4 h-auto p-5 rounded-2xl shadow-2xl" style="background-color: #111236;">
+                <img src="assets/coronavirus.png" class="w-24 h-24" alt="">
+                <div class="flex flex-col space-y-3">
+                    <p class="text-5xl text-white font-semibold">Travel insurance for COVID-19</p>
+                    <p class="text-xl text-white">One policy with secure in case of cancellation and medical insurance. <a href="#" class="font-semibold underline">More info</a></p>
+                </div>
+            </div>
+
+            <!-- COVID MAP SECTION -->
+            <div class="grid grid-cols-1 justify-between md:grid-cols-2 gap-x-6 bg-gray-200 shadow-2xl w-full md:w-3/4 rounded-xl h-auto py-8 px-5">
+                <div class="flex flex-col space-y-6 items-evenly">
+                    <p class="text-black text-4xl font-semibold">
+                        Get important informations and news for travelers due to <span class="text-red-600">COVID-19</span>
+                    </p>
+
+                    <p class="text-black text-xl">
+                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nobis, dolorum! Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore, veritatis.
+                    </p>
+
+                    <button class="bg-indigo-600 px-3 py-2 rounded-xl text-white font-semibold w-auto">
+                        Map updated automatically
+                    </button>
+
+                    <a href="#" class="text-blue-700 font-semibold text-2xl">
+                        Notifications for travelers
+                    </a>
+                </div>
+
+                <div class="justify-self-end">
+                    <img src="assets/covid-19.png" alt="" class="w-96 h-96">
+                </div>
+            </div>
+
+
+            <!-- OFFERS SECTION -->
+            <div class="flex flex-col flex-wrap space-y-12 w-full md:w-3/4 px-6 ">
+                <div class="flex flex-row justify-between">
+                    <div class="flex flex-col space-y-3 w-3/4">
+                        <p class="text-3xl font-semibold">The best offers at the moment from: Warsaw Chopin</p>
+                        <p class="text-xl">Come back to travelling, paying less, we had found the cheapiest prices of tickets in this week.</p>
+                    </div>
+
+                    <div class="w-1/4 place-self-end text-right text-blue-700 font-semibold text-xl">
+                        See more offers
+                    </div>
+                </div>
+
+
+                <!-- offers -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 rounded-lg gap-6">
+
+                    <!-- BARCELONA -->
+                    <div class="flexflex-col space-y-4 items-start py-5 px-3 w-full bg-gray-100 shadow-xl rounded-lg hover:shadow-2xl transition cursor-pointer">
+                        <div>
+                            <img src="assets/barcelona.jpg" alt="" class="rounded-lg">
+                        </div>
+
+                        <div class="text-3xl font-semibold">
+                            <p>Barcelona</p>
+                        </div>
+
+                        <div class="flex flex-row items-center justify-between w-full">
+                            <div class="flex flex-col">
+                                <p class="font-semibold ">
+                                    wed. 1 dec
+                                </p>
+                                <p>
+                                    WAW - BCN, Wizz Air
+                                </p>
+                            </div>
+
+                            <div class="text-green-500 text-lg font-semibold">
+                                Direct
+                            </div>
+                        </div>
+
+                        <div class="flex flex-row items-center justify-between w-full">
+                            <div class="flex flex-col">
+                                <p class="font-semibold ">
+                                    fr. 10 dec
+                                </p>
+                                <p>
+                                    BCN - WAW, Wizz Air
+                                </p>
+                            </div>
+
+                            <div class="text-green-500 text-lg font-semibold">
+                                Direct
+                            </div>
+                        </div>
+
+                        <div class="flex flex-row items-center justify-between w-full">
+                            <div class="flex flex-row items-center w-3/4 space-x-1">
+                                <i class="fas fa-exclamation-circle text-yellow-600"></i>
+                                <p>
+                                    Moderate restrictions
+                                </p>
+                            </div>
+
+                            <div class="flex flex-row items-center text-blue-700 text-md font-semibold space-x-1 ">
+                                <p>
+                                    165 PLN
+                                </p>
+                                <i class="fas fa-chevron-right"></i>
+                            </div>
+                        </div>
+
+                        
+                    </div>
+
+                    <!-- Rejkavik -->
+                    <div class="flex flex-col space-y-4 items-start py-5 px-3 w-full bg-gray-100 shadow-xl rounded-lg hover:shadow-2xl transition cursor-pointer">
+                        <div>
+                            <img src="assets/rejkavik.jpg" alt="" class="rounded-lg">
+                        </div>
+
+                        <div class="text-3xl font-semibold">
+                            <p>Reykjavík</p>
+                        </div>
+
+                        <div class="flex flex-row items-center justify-between w-full">
+                            <div class="flex flex-col">
+                                <p class="font-semibold ">
+                                    wed. 8 dec
+                                </p>
+                                <p>
+                                    WAW - RKV, KLM
+                                </p>
+                            </div>
+
+                            <div class="text-green-500 text-lg font-semibold">
+                                Direct
+                            </div>
+                        </div>
+
+                        <div class="flex flex-row items-center justify-between w-full">
+                            <div class="flex flex-col">
+                                <p class="font-semibold ">
+                                    wed. 2 dec
+                                </p>
+                                <p>
+                                    RKV - WAW, KLM
+                                </p>
+                            </div>
+
+                            <div class="text-green-500 text-lg font-semibold">
+                                Direct
+                            </div>
+                        </div>
+
+                        <div class="flex flex-row items-center justify-between w-full">
+                            <div class="flex flex-row items-center w-3/4 space-x-1">
+                                <i class="fas fa-exclamation-circle text-yellow-600"></i>
+                                <p>
+                                    Moderate restrictions
+                                </p>
+                            </div>
+
+                            <div class="flex flex-row items-center text-blue-700 text-md font-semibold space-x-1 ">
+                                <p>
+                                    890 PLN
+                                </p>
+                                <i class="fas fa-chevron-right"></i>
+                            </div>
+                        </div>
+
+                        
+                    </div>
+
+                    <!-- Rio -->
+                    <div class="flex flex-col hover:scale-150 hover:transform space-y-4 items-start py-5 px-3 w-full bg-gray-100 shadow-xl rounded-lg hover:shadow-2xl transition cursor-pointer">
+                        <div>
+                            <img src="assets/rio.jpg" alt="" class="rounded-lg">
+                        </div>
+
+                        <div class="text-3xl font-semibold">
+                            <p>Rio de Janeiro</p>
+                        </div>
+
+                        <div class="flex flex-row items-center justify-between w-full">
+                            <div class="flex flex-col">
+                                <p class="font-semibold ">
+                                    wed. 2 dec
+                                </p>
+                                <p>
+                                    WAW - GIG, KLM
+                                </p>
+                            </div>
+
+                            <div class="text-green-500 text-lg font-semibold">
+                                Direct
+                            </div>
+                        </div>
+
+                        <div class="flex flex-row items-center justify-between w-full">
+                            <div class="flex flex-col">
+                                <p class="font-semibold ">
+                                    wed. 2 dec
+                                </p>
+                                <p>
+                                    GIG - WAW, KLM
+                                </p>
+                            </div>
+
+                            <div class="text-green-500 text-lg font-semibold">
+                                Direct
+                            </div>
+                        </div>
+
+                        <div class="flex flex-row items-center justify-between w-full">
+                            <div class="flex flex-row items-center w-3/4 space-x-1">
+                                <i class="fas fa-exclamation-circle text-yellow-600"></i>
+                                <p>
+                                    Moderate restrictions
+                                </p>
+                            </div>
+
+                            <div class="flex flex-row items-center text-blue-700 text-md font-semibold space-x-1 ">
+                                <p>
+                                    1250 PLN
+                                </p>
+                                <i class="fas fa-chevron-right"></i>
+                            </div>
+                        </div>
+
+                        
+                    </div>
+                </div>
+            </div>
+
+
+
+            <!-- DESCRIPTION SECTION -->
+            <div class="flex flex-row flex-wrap justify-center space-x-16 bg-gray-200 w-full h-auto py-12">
+
+                <!-- SECTION 1 -->
+                <div class="flex flex-col space-y-2 w-96 items-center p-4 justify-center">
+
+                    <div>
+                        <img src="assets/undraw_connected_world_wuay.svg" alt="" class="w-96 h-96">
+                    </div>
+
+                    <div class="font-semibold text-3xl">
+                        <p class="text-center">
+                            Go wherever you want!
+                        </p>
+                    </div>
+
+                    <div>
+                        <p class="break-words text-center">
+                            Lorem ipsum dolor sit amet 
+                            consectetur adipisicing elit. 
+                            Dolor nesciunt explicabo aspernatur.
+                        </p>
+                    </div>
+
+                </div>
+
+                <!-- SECTION2 -->
+                <div class="flex flex-col space-y-4 w-96 items-center p-4 justify-center">
+
+                    <div>
+                        <img src="assets/undraw_Travelers_re_y25a.svg" alt="" class="w-96 h-96">
+                    </div>
+
+                    <div class="font-semibold text-2xl">
+                        <p class="text-center">
+                            Meet new people!
+                        </p>
+                    </div>
+
+                    <div>
+                        <p class="break-words text-center">
+                            Lorem ipsum dolor sit amet 
+                            consectetur adipisicing elit. 
+                            Dolor nesciunt explicabo aspernatur.
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <!-- SECTION3 -->
+                <div class="flex flex-col space-y-4 w-96 items-center p-4 justify-center">
+
+                    <div>
+                        <img src="assets/undraw_adventure_4hum.svg" alt="" class="w-96 h-96">
+                    </div>
+
+                    <div class="font-semibold text-2xl">
+                        <p class="text-center">
+                            Pack your backpack and let's travel begin!
+                        </p>
+                    </div>
+
+                    <div>
+                        <p class="break-words text-center">
+                            Lorem ipsum dolor sit amet 
+                            consectetur adipisicing elit. 
+                            Dolor nesciunt explicabo aspernatur.
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+
+
+            
+        </div>
+    </div>
+
+    <!-- FOOTER SECTION -->
+    <div class="w-screen mt-64 p-12 bg-indigo-900">
+        <div class="grid w-full grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 justify-items-end">
+            <ul class="flex flex-col text-xl space-y-2 text-white">
+
+                <p class="text-yellow-700 font-semibold text-3xl mb-3">
+                    Explore
+                </p>
+    
+                <li>
+                    Cities
+                </li>
+                <li>
+                    Airports
+                </li>
+                <li>
+                    Countries
+                </li>
+                <li>
+                    Cheap airlines
+                </li>
+                <li>
+                    Hotels
+                </li>
+                <li>
+                    Application
+                </li>
+            </ul>
+    
+            <ul class="flex flex-col text-xl space-y-2 text-white">
+    
+                <p class="text-yellow-700 font-semibold text-3xl mb-3">
+                    Partners
+                </p>
+    
+                <li>
+                    Work with us
+                </li>
+                <li>
+                    Affiliate programs
+                </li>
+                <li>
+                    API Interfaces
+                </li>
+                <li>
+                    Promote with us
+                </li>
+            </ul>
+    
+            <ul class="flex flex-col text-xl space-y-2 text-white">
+    
+                <p class="text-yellow-700 font-semibold text-3xl mb-3">
+                    Company
+                </p>
+    
+                <li>
+                    About us
+                </li>
+                <li>
+                    Why Travellito?
+                </li>
+                <li>
+                    Media
+                </li>
+                <li>
+                    Our employee
+                </li>
+                <li>
+                    Our brand
+                </li>
+    
+                <li>
+                    Cookies Files Policy
+                </li>
+    
+                <li>
+                    Privacy Policy
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- SUBFOOTER SECTION -->
+    <div class="w-screen bg-indigo-600 text-center p-2 text-gray-900">
+        ©Travellito Ltd 1999 - 2021
+    </div>
+
+
+
+    <script>
+        const menuMobile  = document.querySelector('#menu-mobile');
+
+        const show =  (elem) => {
+            return function(){
+                elem.classList.add('block');
+                elem.classList.remove('hidden');
+            }
+        }
+
+        const hide =  (elem) => {
+            return function(){
+                elem.classList.add('hidden');
+                elem.classList.remove('flex');
+            }
+        }
+
+        document.querySelector('#toggle-mobile').addEventListener('click', show(menuMobile))
+        document.querySelector('#hide-menu').addEventListener('click', hide(menuMobile))
+    </script>
+</body>
+</html>
